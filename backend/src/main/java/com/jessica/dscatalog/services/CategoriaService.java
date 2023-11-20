@@ -18,6 +18,7 @@ public class CategoriaService {
 
 	@Autowired
 	private CategoriaRepository repository;
+	public Object insert;
 	
 	@Transactional(readOnly = true)
 	public List<CategoriaDTO> findAll(){
@@ -31,6 +32,14 @@ public class CategoriaService {
 	public CategoriaDTO findById(Long id) {
 		Optional<Categoria> obj = repository.findById(id);
 		Categoria entity = obj.orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
+		return new CategoriaDTO(entity);
+	}
+	
+	@Transactional
+	public CategoriaDTO insert(CategoriaDTO dto) {
+		Categoria entity = new Categoria();
+		entity.setNome(dto.getNome());
+		entity = repository.save(entity);
 		return new CategoriaDTO(entity);
 	}
 }
