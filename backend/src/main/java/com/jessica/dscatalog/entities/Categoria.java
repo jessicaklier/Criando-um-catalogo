@@ -25,10 +25,10 @@ public class Categoria implements Serializable {
 	private String nome;
 	
 	//armazenando instant no banco de dados como um horario padrão UTC
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	@Column(columnDefinition = "TIMESTAMP  WITHOUT TIME ZONE")
 	private Instant createdAt;
 	
-	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+	@Column(columnDefinition = "TIMESTAMP  WITHOUT TIME ZONE")
 	private Instant updatedAt;
 	
 	public Categoria() {
